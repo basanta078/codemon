@@ -1,4 +1,4 @@
 import { Navigation } from 'react-native-navigation';
-import { pushTutorialScreen } from 'AppNavigator';
+import { pushSingleScreenApp } from 'AppNavigator';
 
-Navigation.events().registerAppLaunchedListener(() => pushTutorialScreen());
+Navigation.events().registerAppLaunchedListener(() => pushSingleScreenApp());
