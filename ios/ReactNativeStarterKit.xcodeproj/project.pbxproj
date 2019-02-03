@@ -488,7 +488,6 @@
 				4D98646FB7CD414DBE388577 /* libAppCenterReactNative.a in Frameworks */,
 				C23088EDFD064EA68BC4B11D /* libAppCenterReactNativeAnalytics.a in Frameworks */,
 				77C3B43BCC044DF0983B3791 /* libAppCenterReactNativeCrashes.a in Frameworks */,
-				299DC64CF9C35FDA2CF26A41 /* libPods-ReactNativeStarterKit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
