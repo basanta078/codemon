@@ -7,7 +7,6 @@ import { persistStore } from 'redux-persist';
 import createSagaMiddleware from 'redux-saga';
 import { createLogger } from 'redux-logger';
 
-import { composeWithDevTools } from 'remote-redux-devtools';
 
 import rootReducer from './reducers';
 import sagas from './sagas';
@@ -21,15 +20,17 @@ export default function initializeStore() {
     __DEV__ ? createLogger() : null
   ]);
 
-  let debuggWrapper = data => data;
-  if (__DEV__) {
-    debuggWrapper = composeWithDevTools({ realtime: true, port: 8000 });
-  }
+  const composeEnhancers =
+  typeof window === 'object' &&
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?   
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+      // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+    }) : compose;
 
   const store = createStore(
     rootReducer,
     {},
-    debuggWrapper(compose(applyMiddleware(...middlewares)))
+    composeEnhancers(applyMiddleware(...middlewares))
   );
 
   persistStore(

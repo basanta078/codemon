@@ -24,8 +24,7 @@
     "redux-logger": "^3.0.6",
     "redux-persist": "^5.10.0",
     "redux-saga": "^0.16.2",
-    "redux-thunk": "^2.3.0",
-    "remote-redux-devtools": "^0.5.12"
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
