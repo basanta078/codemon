@@ -2,10 +2,10 @@
 
 import { createAction } from 'redux-actions';
 
-export const GET_FACEBOOK_DATA = 'data/GET_FACEBOOK_DATA';
-export const GET_FACEBOOK_DATA_SUCCESS = 'data/GET_FACEBOOK_DATA_SUCCESS';
+export const GET_NEXT_QUESTION = 'data/GET_NEXT_QUESTION';
+export const GET_NEXT_QUESTION_SUCCESS = 'data/GET_NEXT_QUESTION_SUCCESS';
 
 export const fetchDataActionCreators = {
-  getFacebookUserData: createAction(GET_FACEBOOK_DATA),
-  getFacebookUserDataSuccess: createAction(GET_FACEBOOK_DATA_SUCCESS),
+  getNextQuestion: createAction(GET_NEXT_QUESTION),
+  getNextQuestionSuccess: createAction(GET_NEXT_QUESTION_SUCCESS),
 };

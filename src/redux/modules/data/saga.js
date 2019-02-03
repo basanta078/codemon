@@ -11,37 +11,35 @@ import {
 } from 'redux-saga/effects';
 
 import {
-  GET_FACEBOOK_DATA,
+  GET_NEXT_QUESTION,
   fetchDataActionCreators
 } from './actions';
 
-export function* asyncGetFacebookUserData({ payload }) {
-
-  const { facebookToken } = payload;
+export function* asyncGetNextQuestion(data) {
 
   // eslint-disable-next-line
-  const url = `https://graph.facebook.com/v2.11/me?access_token=${facebookToken}&fields=id,name,email,picture{url}`;
+  const url = `http://192.168.1.13:8080/questions/getNextQuestion:123`;
 
   try {
     const response = yield call(App_Service, { url, method: 'GET' });
 
     if (response.result === 'ok') {
-      yield put(fetchDataActionCreators.getFacebookUserDataSuccess(response.data));
+      yield put(fetchDataActionCreators.getNextQuestionSuccess(response.data));
     }
   } catch (e) {
     console.log(e);
   }
 }
 
-export function* watchGetFacebookUserData() {
+export function* watchGetNextQuestion() {
   while (true) {
-    const action = yield take(GET_FACEBOOK_DATA);
-    yield* asyncGetFacebookUserData(action);
+    const action = yield take(GET_NEXT_QUESTION);
+    yield* asyncGetNextQuestion(action);
   }
 }
 
 export default function* () {
   yield all([
-    fork(watchGetFacebookUserData),
+    fork(watchGetNextQuestion),
   ]);
 }

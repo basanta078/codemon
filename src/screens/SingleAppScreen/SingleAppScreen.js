@@ -13,12 +13,11 @@ import { get } from 'lodash';
 
 import { pushTutorialScreen } from 'AppNavigator';
 import { connectData } from 'AppRedux';
-
+import { Question, Answer } from 'AppComponents';
 const styles = StyleSheet.create({
   flex: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'flex-start'
   }
 });
 
@@ -47,19 +46,32 @@ class SingleAppScreen extends PureComponent {
     }
   }
 
+  componentDidMount(){
+    const { getNextQuestion, data } = this.props;
+    if (!data.nextQuestion)
+      getNextQuestion(data.user.id);
+  }
   render() {
+    const {nextQuestion} = this.props.data;
+    if (!nextQuestion)
+      return (
+        <View style={{flex:1, justifyContent: "center", alignItems: "center"}}>
+          <Text style={{ fontSize: 24}}>
+            Loading..
+          </Text>
+      </View>
+      );
     return (
       <View style={styles.flex}>
-        <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-          Play top buttons!
-        </Text>
+        <Question {...nextQuestion}/>
+        <Answer {...nextQuestion} />
       </View>
     );
   }
 }
 
 SingleAppScreen.propTypes = {
-  data: PropTypes.shape({}).isRequired
+  data: PropTypes.shape({}).isRequired,
+  getNextQuestion: PropTypes.func.isRequired
 };
-
 export default connectData()(SingleAppScreen);

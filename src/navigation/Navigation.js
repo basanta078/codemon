@@ -12,8 +12,7 @@ import registerScreens from './registerScreens';
 
 // Register all screens on launch
 registerScreens();
-
-export function pushTutorialScreen() {
+function setDefaultOptions(){
   Navigation.setDefaultOptions({
     topBar: {
       background: {
@@ -32,7 +31,7 @@ export function pushTutorialScreen() {
       style: 'light'
     },
     layout: {
-      orientation: ['portrait']
+      orientation: ['portrait', 'landscape']
     },
     bottomTabs: {
       titleDisplayMode: 'alwaysShow'
@@ -44,6 +43,9 @@ export function pushTutorialScreen() {
       selectedIconColor: 'black',
     }
   });
+}
+export function pushTutorialScreen() {
+  setDefaultOptions();
 
   Navigation.setRoot({
     root: {
@@ -67,6 +69,7 @@ export function pushTutorialScreen() {
 }
 
 export function pushSingleScreenApp() {
+  setDefaultOptions();
   Navigation.setRoot({
     root: {
       stack: {

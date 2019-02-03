@@ -3,7 +3,7 @@ import { fetchDataActionCreators } from './actions';
 
 function mapStateToProps({ data }) {
   return {
-    data
+    data,
   };
 }
 

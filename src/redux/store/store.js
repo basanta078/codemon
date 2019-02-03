@@ -33,7 +33,7 @@ export default function initializeStore() {
     composeEnhancers(applyMiddleware(...middlewares))
   );
 
-  persistStore(
+  const persistor = persistStore(
     store,
     null,
     () => {
@@ -43,5 +43,5 @@ export default function initializeStore() {
 
   sagaMiddleware.run(sagas);
 
-  return store;
+  return {store, persistor};
 }
