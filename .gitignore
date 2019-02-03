@@ -64,3 +64,7 @@ android/app/\.project
 android/app/\.settings/org\.eclipse\.buildship\.core\.prefs
 
 
+
+android/app/src/main/assets/appcenter-config\.json
+
+ios/ReactNativeStarterKit/AppCenter-Config\.plist
