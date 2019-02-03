@@ -53,3 +53,14 @@ buck-out/
 */fastlane/Preview.html
 */fastlane/screenshots
 .jest-cache
+android/\.project
+
+android/\.settings/org\.eclipse\.buildship\.core\.prefs
+
+android/app/\.classpath
+
+android/app/\.project
+
+android/app/\.settings/org\.eclipse\.buildship\.core\.prefs
+
+
